@@ -10,6 +10,7 @@ create table posts(
   title varchar(255),
   skype_id varchar(255),
   message text,
+  female  varchar(255),
   password varchar(255),
   created datetime
 );

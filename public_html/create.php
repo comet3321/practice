@@ -47,29 +47,41 @@ require_once(__DIR__ . '/../config/config.php');
           <a href="skype:skypechdotcom?chat">Skype ID:skypechdotcom</a>
           へどうぞ (๑ ˙˘˙)/
         </p>
-        <div class="btn-post-create">
-          <a href="/create.php">投稿する</a>
+        <div class="main">
+          <div class="post">
+            <form action="index.html" method="post">
+              <div class="controls">
+                <div class="control-group">
+                  <label for="skype_id">SkypeID</label>
+                  <input type="text" name="skype_id" placeholder="skype id" id="skype_id">
+                </div>
+                <div class="control-group">
+                  <label for="post_name">SkypeID</label>
+                  <input type="text" name="name" placeholder="名前"id="skype_name">
+                </div>
+                <div class="control-group">
+                  <label for="female">性別</label>
+                  <input type="radio" name="female" value="man" id="famele">男
+                  <input type="radio" name="female" value="woman" id="famele">女
+                  <input type="radio" name="female" value="unknown" id="famele">不明
+                </div>
+                <div class="control-group">
+                  <label for="post_title">タイトル</label>
+                  <input type="text" name="title" placeholder="タイトル" id="title">
+                </div>
+                <div class="control-group">
+                  <label for="post_message">メッセージ</label>
+                  <textarea rows="6" cols="50" class="span8" placeholder="メッセージ" id="post_message"></textarea>
+                </div>
+                <div class="control-group">
+                  <label for="post_password">パスワード</label>
+                  <input type="password" name="password" placeholder="パスワード" id="post_password">
+                </div>
+                <button type="submit">submit</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="tag-menu">
-          <ul>
-            <li>通話</li>
-            <li>寝落ち</li>
-          </ul>
-          <a href="#">タグリスト</a>
-        </div><!-- tagu-menu -->
-        <h2>スカイプちゃんねる掲示板</h2>
-        <a href="#">↓</a>
-        <div class="posts">
-          <p>投稿一覧</p>
-        </div>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </ul>
-      </div><!-- container -->
-    </div><!-- main -->
     <footer>
       <div class="container">
         <div class="footer-parts">
