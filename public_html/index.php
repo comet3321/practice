@@ -101,7 +101,7 @@ try {
               </dt>
               <dd>
                 <span><?=  nl2br(h($row["message"])) ?></span>
-                <a href="#" class="post-violation">通報</a>
+                <a href="sendmail.php?id=<?=h($row['id']) ?>" class="post-violation">通報</a>
               </dd>
             </div>
             <?php endforeach; ?>
