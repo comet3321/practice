@@ -39,11 +39,9 @@ try {
         <h1 id="logo" class="clearText">
           <a href="/">スカイプちゃんねるｗ</a>
         </h1>
-        <div class="menu">
-          <ul class="clearText">
-            <li id="menu_post_created">投稿</li>
-            <li id="menu_search">検索</li>
-          </ul>
+        <div class="menu clearText">
+         <a href="#" id="menu_post_created">投稿</a>
+         <a href="serch.php" id="menu_search">a</a>
         </div><!-- menu -->
         <div id="active">
           <span id ="counter">1204</span>
@@ -88,7 +86,6 @@ try {
           </br>
         </div>
         <div class="posts-row">
-          <p>a</p>
           <dl>
             <?php $i = 0; ?>
             <?php foreach ($sql_result as $row) : ?>
