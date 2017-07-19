@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/config.php');
 
  ?>
 
@@ -63,14 +63,14 @@ require_once(__DIR__ . '/../config/config.php');
         </p>
         <div class="post-stage">
           <h2>スカイプ掲示板に募集する</h2>
-          <form action="index.html" method="post">
+          <form action="actions.php" method="post">
             <div class="controls">
               <div class="control-group">
                 <label for="skype_id">SkypeID</label>
                 <input type="text" name="skype_id" placeholder="skype id" id="skype_id">
               </div>
               <div class="control-group">
-                <label for="post_name">SkypeID</label>
+                <label for="post_name">名前</label>
                 <input type="text" name="name" placeholder="名前"id="skype_name">
               </div>
               <div class="control-group post-radio">
