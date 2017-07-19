@@ -32,4 +32,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $stmt = $pdo->prepare('insert into posts(name, title, skype_id, message, female, password) values(?, ?, ?, ?, ?, ?)');
   $stmt->execute([$name, $title, $skype_id, $post_message, $female, $password]);
 
+  header('location: index.php');
 }

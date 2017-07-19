@@ -1,5 +1,6 @@
 body{
   background: #f4fafe;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Noto Sans Japanese", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
 }
 
 li{
@@ -108,7 +109,7 @@ header #menu_search{
 
 .site-news{
   color: #2980b9;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .site-news strong{
@@ -135,7 +136,7 @@ header #menu_search{
 
 .tag-menu a{
   padding: 8px 10px;
-  font-size: 13px;
+  font-size: 17px;
   color: white;
   background: #7f8c8d;
   width: 150px;
@@ -143,9 +144,7 @@ header #menu_search{
   display: block;
 }
 
-.post-title{
-  float:  right;
-}
+
 
 .post-title a, .post-title h2{
   display: inline;
@@ -180,11 +179,11 @@ footer .container section{
 }
 
 .footer-parts h2{
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .footer-parts ,.footer-parts h3{
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .copyright{
@@ -241,4 +240,62 @@ footer .container section{
   width: 400px;
   border-radius: 10px;
   cursor: pointer;
+}
+
+
+/* posts-row */
+
+.post{
+  width: 300px;
+  color:  white;
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+dt{
+  font-size:23px;
+  font-weight: 600;
+  padding-left: 20px;
+}
+
+dd{
+  color: #34495e;
+  font-size: 17px;
+  font-weight: 450;
+  position: relative;
+  padding-top: 20px;
+  margin-left: 20px;
+
+}
+
+.post-violation{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.post-name{
+  height: 44px;
+}
+
+.skype-id{
+  height: 44px;
+}
+
+.post-center{
+  margin: 0 10px;
+}
+
+
+.man{
+  background: linear-gradient(#347DDB, #34C5DB);
+}
+
+.woman{
+  background: linear-gradient(#DC3460, #DC34A9);
+}
+
+.unknown{
+  background: linear-gradient(#5B6E78, #789094);
 }

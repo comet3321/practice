@@ -1,6 +1,17 @@
 <?php
 require_once(__DIR__ . '/config.php');
 
+try {
+  //接続
+  $pdo = new PDO(DSN, DB_USERNAME, DB_PASSWORD);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  //投稿された記事の
+  $sql_result = $pdo->query("select * from posts");
+
+} catch (Exception $e) {
+  echo $e->getMessage() . PHP_EOL;
+}
+
  ?>
 
 <!DOCTYPE html>
@@ -74,16 +85,31 @@ require_once(__DIR__ . '/config.php');
         <div class="post-title">
           <h2>スカイプちゃんねる掲示板</h2>
           <a href="#">↓</a>
+          </br>
         </div>
-        <div class="posts">
-          <p>投稿一覧</p>
-        </div>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </ul>
+        <div class="posts-row">
+          <p>a</p>
+          <dl>
+            <?php $i = 0; ?>
+            <?php foreach ($sql_result as $row) : ?>
+            <?php $i++ ?>
+            <div class="post <?php if($i ===2 || $i === 5 ||$i === 8){echo 'post-center';} ?>">
+              <dt class="<?= h($row["female"]) ?>">
+              <div class="post-name">
+                <span><?= h($row["name"]) ?></span>
+              </div>
+              <div class="skype-id">
+                <span><?= h($row["skype_id"]) ?></span><br>
+              </div>
+              </dt>
+              <dd>
+                <span><?=  nl2br(h($row["message"])) ?></span>
+                <a href="#" class="post-violation">通報</a>
+              </dd>
+            </div>
+            <?php endforeach; ?>
+          </dl>
+        </div><!-- posts-stage -->
       </div><!-- container -->
     </div><!-- main -->
     <footer>
