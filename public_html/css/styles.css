@@ -281,6 +281,7 @@ dd{
 
 .skype-id{
   height: 44px;
+  overflow: hidden;
 }
 
 .post-center{
@@ -298,4 +299,22 @@ dd{
 
 .unknown{
   background: linear-gradient(#5B6E78, #789094);
+}
+
+img{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+.skype_contact{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background: skyblue;
+  display: inline-block;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
 }

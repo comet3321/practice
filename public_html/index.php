@@ -93,9 +93,11 @@ try {
             <div class="post <?php if($i ===2 || $i === 5 ||$i === 8){echo 'post-center';} ?>">
               <dt class="<?= h($row["female"]) ?>">
               <div class="post-name">
+                <img src="https://api.skype.com/users/<?=h($row['skype_id'])?>/profile/avatar" alt="プロフィール画像">
                 <span><?= h($row["name"]) ?></span>
               </div>
               <div class="skype-id">
+                <a href="skype:<?=h($row['skype_id'])?>?add" class="skype_contact">S</a>
                 <span><?= h($row["skype_id"]) ?></span><br>
               </div>
               </dt>
