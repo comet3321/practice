@@ -15,11 +15,12 @@ try {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   //validate
-  if($_POST['name'] === "" || $_POST['title'] === "" || $_POST['skype_id'] === "" ||
+  if($_POST['tags'] === "" || $_POST['name'] === "" || $_POST['title'] === "" || $_POST['skype_id'] === "" ||
     $_POST['post_message'] === "" || $_POST['female'] === "" || $_POST['password'] === ""){
     echo "未入力の箇所があります。";
     return false;
   }else{
+    $tag = $_POST['tags'];
     $name = $_POST['name'];
     $title = $_POST['title'];
     $skype_id = $_POST['skype_id'];
@@ -29,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
   //挿入
 
-  $stmt = $pdo->prepare('insert into posts(name, title, skype_id, message, female, password) values(?, ?, ?, ?, ?, ?)');
-  $stmt->execute([$name, $title, $skype_id, $post_message, $female, $password]);
+  $stmt = $pdo->prepare('insert into posts(tags, name, title, skype_id, message, female, password) values(?, ?, ?, ?, ?, ?, ?)');
+  $stmt->execute([$tag, $name, $title, $skype_id, $post_message, $female, $password]);
 
   header('location: index.php');
 }

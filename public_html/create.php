@@ -66,6 +66,13 @@ require_once(__DIR__ . '/config.php');
           <form action="actions.php" method="post">
             <div class="controls">
               <div class="control-group">
+                <label for="tags">Tags</label>
+                <input type="text" name="tags" placeholder="tags" id="tag">
+                <p style="color:red">*複数ある場合はカンマ区切りで入力してください</p>
+                <p style="color:red">例：LOL,個通,埼玉</p>
+
+              </div>
+              <div class="control-group">
                 <label for="skype_id">SkypeID</label>
                 <input type="text" name="skype_id" placeholder="skype id" id="skype_id">
               </div>

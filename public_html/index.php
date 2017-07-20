@@ -23,14 +23,6 @@ try {
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-2219839-6', 'auto');
-      ga('send', 'pageview');
-</script>
 <script src="https://apis.google.com/js/platform.js" async defer>
   {lang: 'ja'}
 </script>
@@ -50,16 +42,6 @@ try {
     </header>
     <div id="main">
       <div class="container">
-        <div class="social">
-          <!-- google +1 -->
-          <div class="g-plusone" data-size="medium" data-annotation="none" data-href="http://skypech.com"></div>
-          <!-- twitter -->
-          <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-          <!-- facebook -->
-          <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fskypech&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=true&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=216653671686902" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
-          <!-- hatebu -->
-          <a href="http://b.hatena.ne.jp/entry/http://skypech.com" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-        </div><!-- .social -->
 <p class="site-news">
         <p class="site-news">
           <strong>スカイプちゃんねるｗへようこそ</strong>
@@ -89,7 +71,7 @@ try {
           <dl>
             <?php $i = 0; ?>
             <?php foreach ($sql_result as $row) : ?>
-            <?php $i++ ?>
+            <?php $i++;$num=0; $tag_result =$row["tags"]; $tags = explode(',',$tag_result);?>
             <div class="post <?php if($i ===2 || $i === 5 ||$i === 8){echo 'post-center';} ?>">
               <dt class="<?= h($row["female"]) ?>">
               <div class="post-name">
@@ -102,7 +84,10 @@ try {
               </div>
               </dt>
               <dd>
-                <span><?=  nl2br(h($row["message"])) ?></span>
+                <?php foreach ($tags as $tag) : ?>
+                  <span class="tags"><?= h($tag) ?></span>
+                <?php endforeach; ?>
+                <span class="message"><?=  nl2br(h($row["message"])) ?></span>
                 <a href="sendmail.php?id=<?=h($row['id']) ?>" class="post-violation">通報</a>
               </dd>
             </div>

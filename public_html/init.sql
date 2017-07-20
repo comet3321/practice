@@ -6,6 +6,7 @@ use skypech_bbs
 
 create table posts(
   id int not null auto_increment primary key,
+  tags varchar(255),
   name varchar(255),
   title varchar(255),
   skype_id varchar(255),

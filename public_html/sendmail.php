@@ -7,10 +7,10 @@
 try {
   mb_language("japanese");
   mb_internal_encoding("EUC-JP");
-  $to = "example@example.com";
+  $to = "example@localhost";
   $subject = $id."がやばい";
   $body = "確認して消しててねてｓｔ";
-  $from = "example@example.com";
+  $from = "example@localhost";
   mb_send_mail($to,$subject,$body,"From:".$from);
   echo '通報完了';
 
