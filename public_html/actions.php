@@ -30,8 +30,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
   //挿入
 
+  //posts
   $stmt = $pdo->prepare('insert into posts(tags, name, title, skype_id, message, female, password) values(?, ?, ?, ?, ?, ?, ?)');
   $stmt->execute([$tag, $name, $title, $skype_id, $post_message, $female, $password]);
 
-  header('location: index.php');
+  //tags
+
+  //タグに挿入された値の数を調べる
+  $tags = explode(',',$tag);
+  $count_result = count($tags);
+  //タグの値が一つの場合
+  if ($count_result == '1') {
+    $sth = $pdo->prepare('insert into tags(tags) value(:tag)');
+    $sth->bindParam(':tag', $tag);
+    $sth->execute();
+  }
+  //タグの値が二つ以上の場合
+  if ($count_result >= '2') {
+    foreach ($tags as $row) {
+      $sth = $pdo->prepare('insert into tags(tags) value(:tag)');
+      $sth->bindParam(':tag', $row);
+      $sth->execute();
+    }}elseif($count_result > '5'){
+    echo 'タグは一度に5つまでしか使えません。';
+  }
+
+
 }

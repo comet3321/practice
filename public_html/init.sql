@@ -15,3 +15,9 @@ create table posts(
   password varchar(255),
   created timestamp
 );
+
+create table tags(
+  id int not null auto_increment primary key,
+  tags varchar(255),
+  created timestamp
+);

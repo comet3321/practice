@@ -5,8 +5,10 @@ try {
   //接続
   $pdo = new PDO(DSN, DB_USERNAME, DB_PASSWORD);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  //投稿された記事の
-  $sql_result = $pdo->query("select * from posts");
+  //投稿された記事の取得
+  $sql_result = $pdo->query("select * from posts order by id");
+  //TagsRanking取得
+  $tags_ranking = $pdo->query("select *, count(tags) from tags group by tags desc");
 
 } catch (Exception $e) {
   echo $e->getMessage() . PHP_EOL;
@@ -57,8 +59,9 @@ try {
         </div>
         <div class="tag-menu">
           <ul>
-            <li>通話</li>
-            <li>寝落ち</li>
+            <?php foreach ($tags_ranking as $row): ?>
+              <li><?=$row["tags"];?>( <?=$row["count(tags)"];?> )</li>
+            <?php endforeach; ?>
           </ul>
           <a href="#">タグリスト</a>
         </div><!-- tagu-menu -->
@@ -71,7 +74,7 @@ try {
           <dl>
             <?php $i = 0; ?>
             <?php foreach ($sql_result as $row) : ?>
-            <?php $i++;$num=0; $tag_result =$row["tags"]; $tags = explode(',',$tag_result);?>
+            <?php $i++;$num=0; $tag_result = $row["tags"]; $tags = explode(',',$tag_result);?>
             <div class="post <?php if($i ===2 || $i === 5 ||$i === 8){echo 'post-center';} ?>">
               <dt class="<?= h($row["female"]) ?>">
               <div class="post-name">
