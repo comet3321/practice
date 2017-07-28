@@ -1,20 +1,23 @@
 <?php
 require_once(__DIR__ . '/config.php');
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  //validatte必要
-  $id = $_POST['skype_id'];
-}
-
 try {
   //接続
   $pdo = new PDO(DSN, DB_USERNAME, DB_PASSWORD);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $sql_result = $pdo->query("select * from posts where skype_id = '$id'");
-
 } catch (Exception $e) {
   echo $e->getMessage() . PHP_EOL;
+}
+
+if (isset($_POST['skype_id'])) {
+  //validatte必要
+  $id = $_POST['skype_id'];
+  $sql_result = $pdo->query("select * from posts where skype_id = '$id'");
+}
+if (isset($_POST['tag'])) {
+  //validatte必要
+  $tag = $_POST['tag'];
+  $sql_result = $pdo->query("select * from posts where tags like '%$tag%'");
 }
  ?>
  <!DOCTYPE html>
@@ -26,17 +29,6 @@ try {
      <link rel="stylesheet" href="/css/styles.css">
    </head>
    <body>
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-       ga('create', 'UA-2219839-6', 'auto');
-       ga('send', 'pageview');
- </script>
- <script src="https://apis.google.com/js/platform.js" async defer>
-   {lang: 'ja'}
- </script>
      <header>
        <div class="container">
          <h1 id="logo" class="clearText">
@@ -53,17 +45,6 @@ try {
      </header>
      <div id="main">
        <div class="container">
-         <div class="social">
-           <!-- google +1 -->
-           <div class="g-plusone" data-size="medium" data-annotation="none" data-href="http://skypech.com"></div>
-           <!-- twitter -->
-           <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-           <!-- facebook -->
-           <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fskypech&amp;send=false&amp;layout=button_count&amp;width=110&amp;show_faces=true&amp;font&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=216653671686902" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:110px; height:21px;" allowTransparency="true"></iframe>
-           <!-- hatebu -->
-           <a href="http://b.hatena.ne.jp/entry/http://skypech.com" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-         </div><!-- .social -->
- <p class="site-news">
          <p class="site-news">
            <strong>スカイプちゃんねるｗへようこそ</strong>
            <br>
@@ -89,6 +70,8 @@ try {
            </br>
          </div>
          <div class="posts-row">
+           <p>'<?php if (isset($id)) {echo $id ;
+           }else{echo $tag;} ?>'の検索結果</p>
            <dl>
              <?php $i = 0; ?>
              <?php foreach ($sql_result as $row) : ?>
@@ -103,6 +86,7 @@ try {
                </div>
                </dt>
                <dd>
+                   <span class="tags"><?= h($row["tags"]) ?></span>
                  <span><?=  nl2br(h($row["message"])) ?></span>
                  <a href="#" class="post-violation">通報</a>
                </dd>

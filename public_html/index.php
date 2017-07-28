@@ -6,9 +6,9 @@ try {
   $pdo = new PDO(DSN, DB_USERNAME, DB_PASSWORD);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   //投稿された記事の取得
-  $sql_result = $pdo->query("select * from posts order by id");
+  $sql_result = $pdo->query("select * from posts order by id desc");
   //TagsRanking取得
-  $tags_ranking = $pdo->query("select *, count(tags) from tags group by tags desc");
+  $tags_ranking = $pdo->query("select *, count(tags) from tags group by tags order by count(tags) desc");
 
 } catch (Exception $e) {
   echo $e->getMessage() . PHP_EOL;

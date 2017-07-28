@@ -13,11 +13,11 @@ create table posts(
   message text,
   female  varchar(255),
   password varchar(255),
-  created timestamp
+  created_at datetime
 );
 
 create table tags(
   id int not null auto_increment primary key,
   tags varchar(255),
-  created timestamp
+  created_at datetime
 );
